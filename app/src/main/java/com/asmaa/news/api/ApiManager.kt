@@ -23,7 +23,7 @@ class ApiManager {
                 retrofit = Retrofit
                     .Builder()
                     .client(client)
-                    .baseUrl("https://mp3quran.net/api/v3/")
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
             }

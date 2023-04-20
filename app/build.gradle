@@ -48,7 +48,7 @@ dependencies {
     // androidx.appcompat
     implementation 'androidx.appcompat:appcompat:1.6.1'
     // android.material
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.7.0'
     // androidx.constraintlayout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     // firebase
@@ -67,6 +67,7 @@ dependencies {
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
     //Retrofit
+
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.8"

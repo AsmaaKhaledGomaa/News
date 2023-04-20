@@ -1,7 +1,6 @@
 package com.asmaa.news.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import com.asmaa.news.R
 import com.asmaa.news.adapters.SourcesAdapter
 import com.asmaa.news.api.ApiManager
 import com.asmaa.news.models.NewsResponse
-import com.asmaa.news.models.Source
 import com.asmaa.news.models.SourcesItem
 import com.asmaa.news.models.SourcesResponse
 import com.google.android.material.tabs.TabLayout
@@ -28,6 +26,7 @@ class NewsFragment : Fragment() {
     lateinit var progressBar: ProgressBar
     lateinit var recyclerView: RecyclerView
     lateinit var tabLayout: TabLayout
+    lateinit var tabLayoutCategory: TabLayout
     var adapter = SourcesAdapter(null)
 
     override fun onCreateView(
@@ -45,19 +44,108 @@ class NewsFragment : Fragment() {
         progressBar = requireView().findViewById(R.id.progress_bar)
         recyclerView = requireView().findViewById(R.id.recycle_view)
         tabLayout = requireView().findViewById(R.id.tab_layout)
+        tabLayoutCategory = requireView().findViewById(R.id.tab_layout_items)
         recyclerView.adapter = adapter
-        // initViews()
-        getNewsSources()
+
+        addSourcesByCategory()
 
     }
 
-    fun getNewsSources() {
+
+    fun addSourcesByCategory() {
+
+        tabLayoutCategory.addOnTabSelectedListener(
+            object : TabLayout.OnTabSelectedListener {
+
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+
+                    var position = tab?.position
+
+                    when (position) {
+                        0 -> {
+                            val category = SourcesItem(category = "general")
+                            getSources(category)
+                        }
+                        1 -> {
+                            val category = SourcesItem(category = "business")
+                            getSources(category)
+                        }
+                        2 -> {
+                            val category = SourcesItem(category = "entertainment")
+                            getSources(category)
+                        }
+                        3 -> {
+                            val category = SourcesItem(category = "health")
+                            getSources(category)
+                        }
+                        4 -> {
+                            val category = SourcesItem(category = "science")
+                            getSources(category)
+                        }
+                        5 -> {
+                            val category = SourcesItem(category = "sports")
+                            getSources(category)
+                        }
+                        6 -> {
+                            val category = SourcesItem(category = "technology")
+                            getSources(category)
+                        }
+
+                    }
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+
+                    var position = tab?.position
+
+                    when (position) {
+                        0 -> {
+                            val category = SourcesItem(category = "general")
+                            getSources(category)
+                        }
+                        1 -> {
+                            val category = SourcesItem(category = "business")
+                            getSources(category)
+                        }
+                        2 -> {
+                            val category = SourcesItem(category = "entertainment")
+                            getSources(category)
+                        }
+                        3 -> {
+                            val category = SourcesItem(category = "health")
+                            getSources(category)
+                        }
+                        4 -> {
+                            val category = SourcesItem(category = "science")
+                            getSources(category)
+                        }
+                        5 -> {
+                            val category = SourcesItem(category = "sports")
+                            getSources(category)
+                        }
+                        6 -> {
+                            val category = SourcesItem(category = "technology")
+                            getSources(category)
+                        }
+
+                    }
+                }
+
+            }
+        )
+
+    }
+
+
+    fun getSources(category: SourcesItem) {
         ApiManager
             .getApis()
-            .getSources(Constans.API_KEY)
+            .getSources(Constans.API_KEY, category?.category?:"")
             .enqueue(object : Callback<SourcesResponse> {
                 override fun onFailure(call: Call<SourcesResponse>, t: Throwable) {
-                    Log.e("error", t.localizedMessage)
+                   // Log.e("error", t.localizedMessage)
                     progressBar.isVisible = false
                 }
 
@@ -66,14 +154,16 @@ class NewsFragment : Fragment() {
                     response: Response<SourcesResponse>
                 ) {
                     progressBar.isVisible = false
-                    addSourcestoTabLayout(response.body()?.sources)
+
+                   addSourcestoTabLayout(response.body()?.sources)
+
                     // Log.e("data",response.body().toString())
                 }
             })
     }
 
     private fun addSourcestoTabLayout(Sources: List<SourcesItem?>?) {
-       Sources?.forEach {
+        Sources?.forEach {
             val tab = tabLayout.newTab()
             tab.setText(it?.name)
             tab.tag = it
@@ -91,24 +181,22 @@ class NewsFragment : Fragment() {
                 override fun onTabUnselected(tab: TabLayout.Tab?) {
                 }
 
-
                 override fun onTabReselected(tab: TabLayout.Tab?) {
                     val source = tab?.tag as SourcesItem
                     getNewsBySources(source)
                 }
             })
-
         //tabLayout.getTabAt(0)?.select()
-
     }
+
 
     private fun getNewsBySources(source: SourcesItem) {
         progressBar.isVisible = true
 
         ApiManager
             .getApis()
-            .getNews(Constans.API_KEY,source.id?:"" )
-            .enqueue(object :Callback<NewsResponse>{
+            .getNews(Constans.API_KEY, source.id ?: "")
+            .enqueue(object : Callback<NewsResponse> {
 
                 override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
                     progressBar.isVisible = false
@@ -120,8 +208,8 @@ class NewsFragment : Fragment() {
                 ) {
                     progressBar.isVisible = false
                     adapter.changeData(response.body()?.articles)
-
                 }
-        })
+            })
     }
+
 }

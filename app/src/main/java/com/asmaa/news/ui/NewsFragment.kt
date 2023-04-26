@@ -65,6 +65,7 @@ class NewsFragment : Fragment() {
                         0 -> {
                             val category = SourcesItem(category = "general")
                             getSources(category)
+
                         }
                         1 -> {
                             val category = SourcesItem(category = "business")
@@ -104,37 +105,43 @@ class NewsFragment : Fragment() {
                         0 -> {
                             val category = SourcesItem(category = "general")
                             getSources(category)
+                            tabLayout.getTabAt(0)?.select()
                         }
                         1 -> {
                             val category = SourcesItem(category = "business")
+                            tabLayout.getTabAt(0)?.select()
                             getSources(category)
                         }
                         2 -> {
                             val category = SourcesItem(category = "entertainment")
                             getSources(category)
+                            tabLayout.getTabAt(0)?.select()
                         }
                         3 -> {
                             val category = SourcesItem(category = "health")
                             getSources(category)
+                            tabLayout.getTabAt(0)?.select()
                         }
                         4 -> {
                             val category = SourcesItem(category = "science")
                             getSources(category)
+                            tabLayout.getTabAt(0)?.select()
                         }
                         5 -> {
                             val category = SourcesItem(category = "sports")
                             getSources(category)
+                            tabLayout.getTabAt(0)?.select()
                         }
                         6 -> {
                             val category = SourcesItem(category = "technology")
                             getSources(category)
+                            tabLayout.getTabAt(0)?.select()
                         }
-
                     }
                 }
-
             }
         )
+        tabLayoutCategory.getTabAt(0)?.select()
 
     }
 
@@ -163,6 +170,8 @@ class NewsFragment : Fragment() {
     }
 
     private fun addSourcestoTabLayout(Sources: List<SourcesItem?>?) {
+
+        tabLayout.removeAllTabs()
         Sources?.forEach {
             val tab = tabLayout.newTab()
             tab.setText(it?.name)
@@ -186,7 +195,8 @@ class NewsFragment : Fragment() {
                     getNewsBySources(source)
                 }
             })
-        //tabLayout.getTabAt(0)?.select()
+        tabLayout.getTabAt(0)?.select()
+
     }
 
 

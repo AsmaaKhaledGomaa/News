@@ -18,5 +18,19 @@
         android:id="@+id/newsFragment"
         android:name="com.asmaa.news.ui.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_newsFragment_to_newsDetailsFragment"
+            app:destination="@id/newsDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailsFragment"
+        android:name="com.asmaa.news.ui.NewsDetailsFragment"
+        android:label="fragment_news_details"
+        tools:layout="@layout/fragment_news_details" />
+    <fragment
+        android:id="@+id/todayFragment"
+        android:name="com.asmaa.news.ui.TodayFragment"
+        android:label="fragment_today"
+        tools:layout="@layout/fragment_today" />
 </navigation>

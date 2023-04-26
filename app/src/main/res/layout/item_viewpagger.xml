@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="7dp"
+    app:cardCornerRadius="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/image_pagger_news"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/imagepagger" />
+
+<!--        <TextView-->
+<!--           android:id="@+id/category_pagger"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="@id/image_pagger_news"-->
+<!--            app:layout_constraintTop_toTopOf="@id/image_pagger_news"-->
+<!--            android:background="@drawable/tab_selected_background"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:layout_margin="10dp"-->
+<!--            />-->
+
+        <TextView
+            android:id="@+id/author_pagger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/image_pagger_news"
+            app:layout_constraintBottom_toTopOf="@id/news_title_Text"
+            android:layout_margin="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/category_background"
+            android:padding="5dp"
+            />
+
+        <TextView
+            android:id="@+id/time_pagger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/author_pagger"
+            app:layout_constraintTop_toTopOf="@id/author_pagger"
+            android:layout_marginStart="5dp"
+            android:drawableStart="@drawable/ic_dot"
+            android:drawablePadding="2dp"
+            android:background="@drawable/category_background"
+            android:textColor="@color/white"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/news_title_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/author_pagger"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="7dp"
+            android:textColor="@color/white"
+            android:background="@drawable/category_background"
+            android:paddingStart="6dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,14 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.TodayFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/breakingNews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Breaking News"
+        android:textSize="20sp"
+        android:textColor="@color/pink"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="10dp"
+        />
 
-</FrameLayout>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/country_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/breakingNews"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tabMode="scrollable"
+        app:tabTextColor="@color/gray"
+        app:tabIndicatorHeight="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:tabBackground="@drawable/tab_background"
+        app:tabSelectedTextColor="@color/white"
+        app:tabRippleColor="@color/white">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/eg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Egypt"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ae"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="United_Arab_Emirates"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Argentina"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/au"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Australia"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bulgaria"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/br"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brazil"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/cn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="China"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/co"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Colombia"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/de"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Germany"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/fr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="France"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/gr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Greece"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indonesia"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="India"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/it"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Italy"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/jp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Japan"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/kr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Korea"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Russian"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/Th"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thailand"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turkey"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/za"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="South Africa"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/viewPager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/viewPager"
+        />
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/country_tablayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="7dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

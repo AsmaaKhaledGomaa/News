@@ -27,6 +27,7 @@ class NewsFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var tabLayout: TabLayout
     lateinit var tabLayoutCategory: TabLayout
+
     var adapter = SourcesAdapter(null)
 
     override fun onCreateView(

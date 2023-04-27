@@ -180,5 +180,20 @@
         android:layout_margin="7dp"
         />
 
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dots_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dotsColor="@color/white"
+        app:dotsCornerRadius="6dp"
+        app:dotsSize="10dp"
+        app:dotsSpacing="3dp"
+        app:dotsWidthFactor="2.2"
+        app:selectedDotColor="@color/pink"
+        app:progressMode="true"
+        app:layout_constraintStart_toStartOf="@id/viewPager"
+        app:layout_constraintEnd_toEndOf="@id/viewPager"
+        app:layout_constraintTop_toBottomOf="@id/viewPager"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

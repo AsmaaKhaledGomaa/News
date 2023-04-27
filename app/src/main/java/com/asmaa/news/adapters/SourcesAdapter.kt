@@ -37,6 +37,7 @@ class SourcesAdapter( var items: List<ArticlesItem?>?) : RecyclerView.Adapter<So
         holder.title.setText(item?.title)
         holder.author.setText(item?.author)
         holder.datetime.setText(item?.publishedAt)
+
         Glide.with(holder.itemView)
             .load(item?.urlToImage)
             .into(holder.imageview)

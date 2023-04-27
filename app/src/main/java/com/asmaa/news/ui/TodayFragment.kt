@@ -7,17 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.asmaa.news.Constans
 import com.asmaa.news.R
-import com.asmaa.news.adapters.SourcesAdapter
 import com.asmaa.news.adapters.ViewPaggerAdapter
 import com.asmaa.news.api.ApiManager
 import com.asmaa.news.models.NewsResponse
 import com.asmaa.news.models.SourcesItem
-import com.asmaa.news.models.SourcesResponse
 import com.google.android.material.tabs.TabLayout
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +26,8 @@ class TodayFragment : Fragment() {
     lateinit var progressBar: ProgressBar
     lateinit var viewPagger :ViewPager2
     lateinit var tabLayoutcountry: TabLayout
+    lateinit var dotsIndicator : DotsIndicator
+
 
     var adapter = ViewPaggerAdapter(null)
 
@@ -46,8 +46,10 @@ class TodayFragment : Fragment() {
         progressBar = requireView().findViewById(R.id.progress_bar_item)
         viewPagger = requireView().findViewById(R.id.viewPager)
         tabLayoutcountry = requireView().findViewById(R.id.country_tablayout)
-        viewPagger.adapter = adapter
+        dotsIndicator = requireView().findViewById(R.id.dots_indicator)
 
+        viewPagger.adapter = adapter
+        dotsIndicator.attachTo(viewPagger)
         addNewsByCountry()
     }
 
@@ -60,7 +62,7 @@ class TodayFragment : Fragment() {
 
                 override fun onTabSelected(tab: TabLayout.Tab?) {
 
-                    var position = tab?.position
+                    val position = tab?.position
 
                     when (position) {
                         0 -> {
@@ -69,78 +71,77 @@ class TodayFragment : Fragment() {
 
                         }
                         1 -> {
-                            val country = SourcesItem(category = "ae")
+                            val country = SourcesItem(country = "ae")
                             getTopNews(country)
                         }
                         2 -> {
-                            val country = SourcesItem(category = "ar")
+                            val country = SourcesItem(country = "ar")
                             getTopNews(country)
                         }
                         3 -> {
-                            val country = SourcesItem(category = "bg")
+                            val country = SourcesItem(country = "bg")
                             getTopNews(country)
                         }
                         4 -> {
-                            val country = SourcesItem(category = "br")
+                            val country = SourcesItem(country = "br")
                             getTopNews(country)
                         }
                         5 -> {
-                            val country = SourcesItem(category = "cn")
+                            val country = SourcesItem(country = "cn")
                             getTopNews(country)
                         }
                         6 -> {
-                            val country = SourcesItem(category = "co")
+                            val country = SourcesItem(country = "co")
                             getTopNews(country)
                         }
                         7 -> {
-                            val country = SourcesItem(category = "de")
+                            val country = SourcesItem(country = "de")
                             getTopNews(country)
                         }
                         8 -> {
-                            val country = SourcesItem(category = "fr")
+                            val country = SourcesItem(country = "fr")
                             getTopNews(country)
                         }
                         9 -> {
-                            val country = SourcesItem(category = "gr")
+                            val country = SourcesItem(country = "gr")
                             getTopNews(country)
                         }
                         10 -> {
-                            val country = SourcesItem(category = "id")
+                            val country = SourcesItem(country = "id")
                             getTopNews(country)
                         }
                         11 -> {
-                            val country = SourcesItem(category = "in")
+                            val country = SourcesItem(country = "in")
                             getTopNews(country)
                         }
                         12 -> {
-                            val country = SourcesItem(category = "it")
+                            val country = SourcesItem(country = "it")
                             getTopNews(country)
                         }
                         13 -> {
-                            val country = SourcesItem(category = "jp")
+                            val country = SourcesItem(country = "jp")
                             getTopNews(country)
                         }
                         14 -> {
-                            val country = SourcesItem(category = "kr")
+                            val country = SourcesItem(country = "kr")
                             getTopNews(country)
                         }
                         15 -> {
-                            val country = SourcesItem(category = "ru")
+                            val country = SourcesItem(country = "ru")
                             getTopNews(country)
                         }
                         16 -> {
-                            val country = SourcesItem(category = "Th")
+                            val country = SourcesItem(country = "Th")
                             getTopNews(country)
                         }
                         17 -> {
-                            val country = SourcesItem(category = "tr")
+                            val country = SourcesItem(country = "tr")
                             getTopNews(country)
                         }
                         18 -> {
-                            val country = SourcesItem(category = "za")
+                            val country = SourcesItem(country = "za")
                             getTopNews(country)
                         }
-
                     }
                 }
 
@@ -148,7 +149,7 @@ class TodayFragment : Fragment() {
 
                 override fun onTabReselected(tab: TabLayout.Tab?) {
 
-                    var position = tab?.position
+                    val position = tab?.position
 
                     when (position) {
                         0 -> {
@@ -157,90 +158,88 @@ class TodayFragment : Fragment() {
 
                         }
                         1 -> {
-                            val country = SourcesItem(category = "ae")
+                            val country = SourcesItem(country = "ae")
                             getTopNews(country)
                         }
                         2 -> {
-                            val country = SourcesItem(category = "ar")
+                            val country = SourcesItem(country = "ar")
                             getTopNews(country)
                         }
                         3 -> {
-                            val country = SourcesItem(category = "bg")
+                            val country = SourcesItem(country = "bg")
                             getTopNews(country)
                         }
                         4 -> {
-                            val country = SourcesItem(category = "br")
+                            val country = SourcesItem(country = "br")
                             getTopNews(country)
                         }
                         5 -> {
-                            val country = SourcesItem(category = "cn")
+                            val country = SourcesItem(country = "cn")
                             getTopNews(country)
                         }
                         6 -> {
-                            val country = SourcesItem(category = "co")
+                            val country = SourcesItem(country = "co")
                             getTopNews(country)
                         }
                         7 -> {
-                            val country = SourcesItem(category = "de")
+                            val country = SourcesItem(country = "de")
                             getTopNews(country)
                         }
                         8 -> {
-                            val country = SourcesItem(category = "fr")
+                            val country = SourcesItem(country = "fr")
                             getTopNews(country)
                         }
                         9 -> {
-                            val country = SourcesItem(category = "gr")
+                            val country = SourcesItem(country = "gr")
                             getTopNews(country)
                         }
                         10 -> {
-                            val country = SourcesItem(category = "id")
+                            val country = SourcesItem(country = "id")
                             getTopNews(country)
                         }
                         11 -> {
-                            val country = SourcesItem(category = "in")
+                            val country = SourcesItem(country = "in")
                             getTopNews(country)
                         }
                         12 -> {
-                            val country = SourcesItem(category = "it")
+                            val country = SourcesItem(country = "it")
                             getTopNews(country)
                         }
                         13 -> {
-                            val country = SourcesItem(category = "jp")
+                            val country = SourcesItem(country = "jp")
                             getTopNews(country)
                         }
                         14 -> {
-                            val country = SourcesItem(category = "kr")
+                            val country = SourcesItem(country = "kr")
                             getTopNews(country)
                         }
                         15 -> {
-                            val country = SourcesItem(category = "ru")
+                            val country = SourcesItem(country = "ru")
                             getTopNews(country)
                         }
                         16 -> {
-                            val country = SourcesItem(category = "Th")
+                            val country = SourcesItem(country = "Th")
                             getTopNews(country)
                         }
                         17 -> {
-                            val country = SourcesItem(category = "tr")
+                            val country = SourcesItem(country = "tr")
                             getTopNews(country)
                         }
                         18 -> {
-                            val country = SourcesItem(category = "za")
+                            val country = SourcesItem(country = "za")
                             getTopNews(country)
                         }
 
                     }
-
                 }
             }
         )
-           tabLayoutcountry.getTabAt(0)?.select()
-
-    }
-
+         tabLayoutcountry.getTabAt(0)?.select()
+   }
 
 
-    private fun getTopNews(country:SourcesItem) {
+    private fun getTopNews(country : SourcesItem) {
+        adapter.changeData(null)
         progressBar.isVisible = true
 
         ApiManager
@@ -258,6 +257,7 @@ class TodayFragment : Fragment() {
                 ) {
                     progressBar.isVisible = false
                     adapter.changeData(response.body()?.articles)
+
                 }
             })
     }

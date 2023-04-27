@@ -10,7 +10,8 @@ import com.asmaa.news.R
 import com.asmaa.news.models.ArticlesItem
 import com.bumptech.glide.Glide
 
-class ViewPaggerAdapter( var items: List<ArticlesItem?>?):RecyclerView.Adapter<ViewPaggerAdapter.ViewHolder>(){
+class ViewPaggerAdapter( var items: List<ArticlesItem?>?)
+    :RecyclerView.Adapter<ViewPaggerAdapter.ViewHolder>(){
 
     class ViewHolder (itemView:View) : RecyclerView.ViewHolder(itemView){
 
@@ -31,6 +32,7 @@ class ViewPaggerAdapter( var items: List<ArticlesItem?>?):RecyclerView.Adapter<V
         holder.titlenews.setText(item?.title)
         holder.author.setText(item?.author)
         holder.datetime.setText(item?.publishedAt)
+
         Glide.with(holder.itemView)
             .load(item?.urlToImage)
             .into(holder.imageview)

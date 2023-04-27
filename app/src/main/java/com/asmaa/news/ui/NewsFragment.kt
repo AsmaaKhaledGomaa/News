@@ -202,6 +202,7 @@ class NewsFragment : Fragment() {
 
 
     private fun getNewsBySources(source: SourcesItem) {
+        adapter.changeData(null)
         progressBar.isVisible = true
 
         ApiManager

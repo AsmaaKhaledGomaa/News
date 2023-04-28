@@ -24,7 +24,7 @@ class SplashFragment : Fragment() {
 
         Handler(Looper.myLooper()!!).postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_breakingNewsFragment)
-        },1000)
+        },3000)
 
         return view
     }

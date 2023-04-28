@@ -13,7 +13,11 @@
 
         <action
             android:id="@+id/action_splashFragment_to_breakingNewsFragment"
-            app:destination="@id/breakingNewsFragment" />
+            app:destination="@id/breakingNewsFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/allNewsFragment"
@@ -23,7 +27,11 @@
 
         <action
             android:id="@+id/action_newsFragment_to_articalFragment"
-            app:destination="@id/articalFragment" />
+            app:destination="@id/articalFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
     </fragment>
     <fragment
         android:id="@+id/articalFragment"
@@ -37,7 +45,11 @@
         tools:layout="@layout/fragment_breaking_news" >
         <action
             android:id="@+id/action_breakingNewsFragment_to_articalFragment"
-            app:destination="@id/articalFragment" />
+            app:destination="@id/articalFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
     </fragment>
     <fragment
         android:id="@+id/searchNewsFragment"
@@ -46,6 +58,10 @@
         tools:layout="@layout/fragment_search_news" >
         <action
             android:id="@+id/action_searchNewsFragment_to_articalFragment"
-            app:destination="@id/articalFragment" />
+            app:destination="@id/articalFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
     </fragment>
 </navigation>

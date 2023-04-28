@@ -28,5 +28,11 @@ interface WebServices {
         @Query("country") country: String
     ): Call<NewsResponse>
 
+    @GET ("v2/everything")
+    fun getallNews(
+        @Query("apiKey") apiKey: String,
+        @Query("q") q: String
+    ): Call<NewsResponse>
+
 
 }

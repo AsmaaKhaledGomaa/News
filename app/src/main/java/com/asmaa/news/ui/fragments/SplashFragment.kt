@@ -1,4 +1,4 @@
-package com.asmaa.news.ui
+package com.asmaa.news.ui.fragments
 
 import android.os.Bundle
 import android.os.Handler
@@ -23,7 +23,7 @@ class SplashFragment : Fragment() {
 
 
         Handler(Looper.myLooper()!!).postDelayed({
-            findNavController().navigate(R.id.action_splashFragment_to_newsFragment)
+            findNavController().navigate(R.id.action_splashFragment_to_breakingNewsFragment)
         },1000)
 
         return view

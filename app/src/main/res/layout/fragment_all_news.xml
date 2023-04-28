@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.NewsFragment">
+    tools:context=".ui.fragments.AllNewsFragment">
 
     <ImageView
         android:id="@+id/logo_news"
@@ -33,9 +33,7 @@
         android:layout_marginTop="10dp"
         app:tabBackground="@drawable/tab_background"
         app:tabSelectedTextColor="@color/white"
-        app:tabRippleColor="@color/white"
-
-        >
+        app:tabRippleColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/General"

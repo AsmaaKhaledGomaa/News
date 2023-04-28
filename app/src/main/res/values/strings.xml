@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sources">sources</string>
     <string name="imagepagger">imagepagger</string>
+    <string name="newssearchimage">newssearchimage</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.asmaa.news.ui
+package com.asmaa.news.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -21,7 +21,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class NewsFragment : Fragment() {
+class AllNewsFragment : Fragment() {
 
     lateinit var progressBar: ProgressBar
     lateinit var recyclerView: RecyclerView
@@ -35,7 +35,7 @@ class NewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_news, container, false)
+        val view = inflater.inflate(R.layout.fragment_all_news, container, false)
         return view
 
     }

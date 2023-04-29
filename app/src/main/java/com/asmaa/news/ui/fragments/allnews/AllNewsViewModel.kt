@@ -17,35 +17,35 @@ class AllNewsViewModel : ViewModel(){
 
     val sourcesLiveData = MutableLiveData<List<SourcesItem?>?>()
     val newsLiveData = MutableLiveData<List<ArticlesItem?>?>()
+    val progressbarVisible = MutableLiveData<Boolean>()
+    val messageLiveData = MutableLiveData<String>()
 
 
 
     fun getSources(category: SourcesItem) {
         ApiManager
             .getApis()
-            .getSources(Constans.API_KEY, category?.category?:"")
+            .getSources(Constans.API_KEY, category.category ?:"")
             .enqueue(object : Callback<SourcesResponse> {
                 override fun onFailure(call: Call<SourcesResponse>, t: Throwable) {
                     // Log.e("error", t.localizedMessage)
-                  //  progressBar.isVisible = false
+                    messageLiveData.value = t.localizedMessage
+                    progressbarVisible.value = false
                 }
 
                 override fun onResponse(
                     call: Call<SourcesResponse>,
                     response: Response<SourcesResponse>
                 ) {
-                  //  progressBar.isVisible = false
+                    progressbarVisible.value = false
 
                     sourcesLiveData.value = response.body()?.sources
-                   // addSourcestoTabLayout(response.body()?.sources)
-
-                    // Log.e("data",response.body().toString())
                 }
             })
     }
 
     fun getNewsBySources(source: SourcesItem) {
-      //  progressBar.isVisible = true
+        progressbarVisible.value = true
 
         ApiManager
             .getApis()
@@ -53,7 +53,9 @@ class AllNewsViewModel : ViewModel(){
             .enqueue(object : Callback<NewsResponse> {
 
                 override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
-                   // progressBar.isVisible = false
+                    messageLiveData.value = t.localizedMessage
+
+                    progressbarVisible.value = false
                 }
 
                 override fun onResponse(
@@ -61,9 +63,10 @@ class AllNewsViewModel : ViewModel(){
                     response: Response<NewsResponse>
 
                 ) {
+                    progressbarVisible.value = false
+
                     newsLiveData.value = response.body()?.articles
 
-                   // progressBar.isVisible = false
                    // adapter.changeData(response.body()?.articles)
                 }
             })

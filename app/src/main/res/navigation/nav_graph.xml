@@ -40,7 +40,7 @@
         tools:layout="@layout/fragment_artical" />
     <fragment
         android:id="@+id/breakingNewsFragment"
-        android:name="com.asmaa.news.ui.fragments.BreakingNewsFragment"
+        android:name="com.asmaa.news.ui.fragments.breakingnews.BreakingNewsFragment"
         android:label="fragment_today"
         tools:layout="@layout/fragment_breaking_news" >
         <action

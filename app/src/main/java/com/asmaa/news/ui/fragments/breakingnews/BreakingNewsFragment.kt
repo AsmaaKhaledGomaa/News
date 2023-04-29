@@ -1,4 +1,4 @@
-package com.asmaa.news.ui.fragments
+package com.asmaa.news.ui.fragments.breakingnews
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.asmaa.news.Constans
 import com.asmaa.news.R
 import com.asmaa.news.adapters.ViewPaggerAdapter
 import com.asmaa.news.api.ApiManager
+import com.asmaa.news.models.ArticlesItem
 import com.asmaa.news.models.NewsResponse
 import com.asmaa.news.models.SourcesItem
 import com.google.android.material.tabs.TabLayout
@@ -27,17 +30,41 @@ class BreakingNewsFragment : Fragment() {
     lateinit var viewPagger :ViewPager2
     lateinit var tabLayoutcountry: TabLayout
     lateinit var dotsIndicator : DotsIndicator
-
-
     var adapter = ViewPaggerAdapter(null)
+
+
+    lateinit var viewModel: BreakingNewsViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this)[BreakingNewsViewModel::class.java]
+    }
+
+
+    fun subscribeToLiveData(){
+
+        viewModel.topnewsLiveData.observe(viewLifecycleOwner){
+            changeDataNewsAdapter(it)
+        }
+
+        viewModel.progressbarLiveData.observe(viewLifecycleOwner){
+            progressBar.isVisible = isVisible
+
+        }
+
+        viewModel.messageLiveData.observe(viewLifecycleOwner){ message ->
+
+            Toast.makeText(activity,message, Toast.LENGTH_LONG).show()
+
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_breaking_news, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_breaking_news, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,10 +77,16 @@ class BreakingNewsFragment : Fragment() {
 
         viewPagger.adapter = adapter
         dotsIndicator.attachTo(viewPagger)
+
+        subscribeToLiveData()
         addNewsByCountry()
     }
 
 
+    private fun changeDataNewsAdapter(articles : List<ArticlesItem?>?){
+
+        adapter.changeData(articles)
+    }
 
     fun addNewsByCountry() {
 
@@ -67,80 +100,80 @@ class BreakingNewsFragment : Fragment() {
                     when (position) {
                         0 -> {
                             val country = SourcesItem(country = "eg")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
 
                         }
                         1 -> {
                             val country = SourcesItem(country = "ae")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         2 -> {
                             val country = SourcesItem(country = "ar")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         3 -> {
                             val country = SourcesItem(country = "bg")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         4 -> {
                             val country = SourcesItem(country = "br")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         5 -> {
                             val country = SourcesItem(country = "cn")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         6 -> {
                             val country = SourcesItem(country = "co")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         7 -> {
                             val country = SourcesItem(country = "de")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         8 -> {
                             val country = SourcesItem(country = "fr")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         9 -> {
                             val country = SourcesItem(country = "gr")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         10 -> {
                             val country = SourcesItem(country = "id")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         11 -> {
                             val country = SourcesItem(country = "in")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         12 -> {
                             val country = SourcesItem(country = "it")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         13 -> {
                             val country = SourcesItem(country = "jp")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         14 -> {
                             val country = SourcesItem(country = "kr")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         15 -> {
                             val country = SourcesItem(country = "ru")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         16 -> {
                             val country = SourcesItem(country = "Th")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         17 -> {
                             val country = SourcesItem(country = "tr")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         18 -> {
                             val country = SourcesItem(country = "za")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                     }
                 }
@@ -154,80 +187,80 @@ class BreakingNewsFragment : Fragment() {
                     when (position) {
                         0 -> {
                             val country = SourcesItem(country = "eg")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
 
                         }
                         1 -> {
                             val country = SourcesItem(country = "ae")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         2 -> {
                             val country = SourcesItem(country = "ar")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         3 -> {
                             val country = SourcesItem(country = "bg")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         4 -> {
                             val country = SourcesItem(country = "br")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         5 -> {
                             val country = SourcesItem(country = "cn")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         6 -> {
                             val country = SourcesItem(country = "co")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         7 -> {
                             val country = SourcesItem(country = "de")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         8 -> {
                             val country = SourcesItem(country = "fr")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         9 -> {
                             val country = SourcesItem(country = "gr")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         10 -> {
                             val country = SourcesItem(country = "id")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         11 -> {
                             val country = SourcesItem(country = "in")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         12 -> {
                             val country = SourcesItem(country = "it")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         13 -> {
                             val country = SourcesItem(country = "jp")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         14 -> {
                             val country = SourcesItem(country = "kr")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         15 -> {
                             val country = SourcesItem(country = "ru")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         16 -> {
                             val country = SourcesItem(country = "Th")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         17 -> {
                             val country = SourcesItem(country = "tr")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
                         18 -> {
                             val country = SourcesItem(country = "za")
-                            getTopNews(country)
+                            viewModel.getTopNews(country)
                         }
 
                     }
@@ -236,30 +269,5 @@ class BreakingNewsFragment : Fragment() {
         )
          tabLayoutcountry.getTabAt(0)?.select()
    }
-
-
-    private fun getTopNews(country : SourcesItem) {
-        adapter.changeData(null)
-        progressBar.isVisible = true
-
-        ApiManager
-            .getApis()
-            .getTopNews(Constans.API_KEY,country.country?:"")
-            .enqueue(object : Callback<NewsResponse> {
-
-                override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
-                    progressBar.isVisible = false
-                }
-
-                override fun onResponse(
-                    call: Call<NewsResponse>,
-                    response: Response<NewsResponse>
-                ) {
-                    progressBar.isVisible = false
-                    adapter.changeData(response.body()?.articles)
-
-                }
-            })
-    }
 
 }

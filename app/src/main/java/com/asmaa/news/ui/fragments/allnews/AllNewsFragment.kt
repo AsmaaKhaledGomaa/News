@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.asmaa.news.R
@@ -61,6 +63,18 @@ class AllNewsFragment : Fragment() {
 
         viewModel.newsLiveData.observe(viewLifecycleOwner) {
             changeDataNewsAdapter(it)
+        }
+
+        viewModel.progressbarVisible.observe(viewLifecycleOwner){ isVisible ->
+
+            progressBar.isVisible = isVisible
+
+        }
+
+        viewModel.messageLiveData.observe(viewLifecycleOwner){ message ->
+
+            Toast.makeText(activity,message,Toast.LENGTH_LONG).show()
+
         }
 
     }

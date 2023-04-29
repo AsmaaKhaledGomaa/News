@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/allNewsFragment"
-        android:name="com.asmaa.news.ui.fragments.AllNewsFragment"
+        android:name="com.asmaa.news.ui.fragments.allnews.AllNewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_all_news" >
 

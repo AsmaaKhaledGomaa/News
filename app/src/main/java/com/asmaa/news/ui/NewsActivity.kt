@@ -1,5 +1,6 @@
 package com.asmaa.news.ui
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,6 +14,7 @@ class NewsActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
@@ -20,6 +22,7 @@ class NewsActivity : AppCompatActivity() {
 
       val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
           navController = navHostFragment.navController
+
       val bottomNavigationView=findViewById<BottomNavigationView>(R.id.bottomNavigationView)
           bottomNavigationView.setupWithNavController(navController)
 

@@ -1,8 +1,31 @@
 <resources>
     <string name="app_name">News</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sources">sources</string>
     <string name="imagepagger">imagepagger</string>
     <string name="newssearchimage">newssearchimage</string>
+
+<!-- Breaking News -->
+    <string name="breaking_news">Breaking News</string>
+    <string name="egypt">Egypt</string>
+    <string name="united_arab_emirates">United_Arab_Emirates</string>
+    <string name="argentina">Argentina</string>
+    <string name="australia">Australia</string>
+    <string name="bulgaria">Bulgaria</string>
+    <string name="brazil">Brazil</string>
+    <string name="china">China</string>
+    <string name="colombia">Colombia</string>
+    <string name="germany">Germany</string>
+    <string name="france">France</string>
+    <string name="greece">Greece</string>
+    <string name="indonesia">Indonesia</string>
+    <string name="india">India</string>
+    <string name="italy">Italy</string>
+    <string name="japan">Japan</string>
+    <string name="korea">Korea</string>
+    <string name="russian">Russian</string>
+    <string name="thailand">Thailand</string>
+    <string name="turkey">Turkey</string>
+    <string name="south_africa">South Africa</string>
 </resources>

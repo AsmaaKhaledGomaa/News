@@ -1,13 +1,11 @@
 package com.asmaa.news.ui.fragments.breakingnews
 
-import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.asmaa.news.Constans
 import com.asmaa.news.api.ApiManager
 import com.asmaa.news.models.ArticlesItem
 import com.asmaa.news.models.NewsResponse
-import com.asmaa.news.models.SourcesItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,13 +17,13 @@ class BreakingNewsViewModel : ViewModel() {
     val messageLiveData = MutableLiveData<String>()
 
 
-    fun getTopNews(country : SourcesItem) {
+    fun getTopNews() {
      //   adapter.changeData(null)
         progressbarLiveData.value = true
 
         ApiManager
             .getApis()
-            .getTopNews(Constans.API_KEY,country.country?:"")
+            .getTopNews(Constans.API_KEY,"us")
             .enqueue(object : Callback<NewsResponse> {
 
                 override fun onFailure(call: Call<NewsResponse>, t: Throwable) {

@@ -2,15 +2,16 @@ package com.asmaa.news.ui.fragments.breakingnews
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.asmaa.news.Constans
-import com.asmaa.news.api.ApiManager
+import androidx.lifecycle.viewModelScope
 import com.asmaa.news.models.ArticlesItem
-import com.asmaa.news.models.NewsResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.asmaa.news.repo.breakingnews.BreakingNewsRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class BreakingNewsViewModel : ViewModel() {
+
+@HiltViewModel
+class BreakingNewsViewModel @Inject constructor(val breakingNewsRepo:BreakingNewsRepo): ViewModel() {
 
     val topnewsLiveData = MutableLiveData<List<ArticlesItem?>?>()
     val progressbarLiveData = MutableLiveData<Boolean>()
@@ -18,31 +19,22 @@ class BreakingNewsViewModel : ViewModel() {
 
 
     fun getTopNews() {
-     //   adapter.changeData(null)
-        progressbarLiveData.value = true
-
-        ApiManager
-            .getApis()
-            .getTopNews(Constans.API_KEY,"us")
-            .enqueue(object : Callback<NewsResponse> {
-
-                override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
-                    progressbarLiveData.value = false
-                    messageLiveData.value = t.localizedMessage
+        //   adapter.changeData(null)
 
 
-                }
+       viewModelScope.launch{
+           try {
+               progressbarLiveData.value = true
 
-                override fun onResponse(
-                    call: Call<NewsResponse>,
-                    response: Response<NewsResponse>
-                ) {
-                    progressbarLiveData.value = false
-                    topnewsLiveData.value = response.body()?.articles
-                    //adapter.changeData(response.body()?.articles)
+               val result = breakingNewsRepo.getTopNewsR("us")
 
-                }
-            })
+               progressbarLiveData.value = false
+
+               topnewsLiveData.value=result
+           } catch (ex: Exception) {
+               progressbarLiveData.value = false
+
+           }
+       }
     }
-
 }

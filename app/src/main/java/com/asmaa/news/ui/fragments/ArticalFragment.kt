@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.asmaa.news.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArticalFragment : Fragment() {
 
     override fun onCreateView(

@@ -1,29 +1,27 @@
 package com.asmaa.news.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.asmaa.news.R
+import com.asmaa.news.databinding.ItemNewsBinding
 import com.asmaa.news.models.ArticlesItem
 import com.bumptech.glide.Glide
 
 
-class SearchAdapter( var items: List<ArticlesItem?>?) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(var items: List<ArticlesItem?>?): RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.title_search)
-        val author: TextView = itemView.findViewById(R.id.author_search)
-        val imageview: ImageView = itemView.findViewById(R.id.imageview_search)
-
+    class ViewHolder(val itemViewBinding: ItemNewsBinding) : RecyclerView.ViewHolder(itemViewBinding.root) {
+        fun bind(item: ArticlesItem?){
+            itemViewBinding.news=item
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_search, parent, false)
-        return ViewHolder(view)
+        val viewBinding: ItemNewsBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.item_search,parent,false)
+        return ViewHolder(viewBinding)
     }
 
     override fun getItemCount(): Int {
@@ -32,13 +30,16 @@ class SearchAdapter( var items: List<ArticlesItem?>?) : RecyclerView.Adapter<Sea
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items?.get(position)
+        holder.bind(item)
 
-        holder.title.setText(item?.title)
-        holder.author.setText(item?.author)
         Glide.with(holder.itemView)
             .load(item?.urlToImage)
-            .into(holder.imageview)
+            .placeholder(R.drawable.animation_progressbar)
+            .error(R.drawable.animation_progressbar)
+            .into(holder.itemViewBinding.imageview)
+
     }
+
 
     fun changeData( data : List<ArticlesItem?>?) {
         items = data

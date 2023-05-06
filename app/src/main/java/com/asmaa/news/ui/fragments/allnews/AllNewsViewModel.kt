@@ -2,17 +2,19 @@ package com.asmaa.news.ui.fragments.allnews
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.asmaa.news.Constans
-import com.asmaa.news.api.ApiManager
+import androidx.lifecycle.viewModelScope
 import com.asmaa.news.models.ArticlesItem
-import com.asmaa.news.models.NewsResponse
 import com.asmaa.news.models.SourcesItem
-import com.asmaa.news.models.SourcesResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.asmaa.news.repo.allnews.news.NewsRepo
+import com.asmaa.news.repo.allnews.sources.SourcesRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+import kotlin.Exception
 
-class AllNewsViewModel : ViewModel(){
+
+@HiltViewModel
+class AllNewsViewModel @Inject constructor(val newsRepo:NewsRepo,val sourcesRepo:SourcesRepo):ViewModel(){
 
 
     val sourcesLiveData = MutableLiveData<List<SourcesItem?>?>()
@@ -22,54 +24,38 @@ class AllNewsViewModel : ViewModel(){
 
 
 
-    fun getSources(category: SourcesItem) {
-        ApiManager
-            .getApis()
-            .getSources(Constans.API_KEY, category.category ?:"")
-            .enqueue(object : Callback<SourcesResponse> {
-                override fun onFailure(call: Call<SourcesResponse>, t: Throwable) {
-                    // Log.e("error", t.localizedMessage)
-                    messageLiveData.value = t.localizedMessage
+    fun getSources(sources: SourcesItem) {
+
+        viewModelScope.launch {
+            try {
+                progressbarVisible.value = true
+
+                val result = sourcesRepo.getSourcesR(sources.category?: "")
+
+                progressbarVisible.value = false
+
+                sourcesLiveData.value = result
+//                Timber.tag("error").i(category.category)
+
+            } catch (ex: Exception) {
                     progressbarVisible.value = false
                 }
+            }
+        }
 
-                override fun onResponse(
-                    call: Call<SourcesResponse>,
-                    response: Response<SourcesResponse>
-                ) {
-                    progressbarVisible.value = false
-
-                    sourcesLiveData.value = response.body()?.sources
-                }
-            })
-    }
 
     fun getNewsBySources(source: SourcesItem) {
-        progressbarVisible.value = true
 
-        ApiManager
-            .getApis()
-            .getNews(Constans.API_KEY, source.id ?: "")
-            .enqueue(object : Callback<NewsResponse> {
+        viewModelScope.launch {
+            try {
+                progressbarVisible.value = true
+                val result = newsRepo.getNewsR(source.id.toString())
+                progressbarVisible.value = false
+                newsLiveData.value = result
+            }catch (ex:Exception){
+                progressbarVisible.value = false
+            }
+        }
 
-                override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
-                    messageLiveData.value = t.localizedMessage
-
-                    progressbarVisible.value = false
-                }
-
-                override fun onResponse(
-                    call: Call<NewsResponse>,
-                    response: Response<NewsResponse>
-
-                ) {
-                    progressbarVisible.value = false
-
-                    newsLiveData.value = response.body()?.articles
-
-                   // adapter.changeData(response.body()?.articles)
-                }
-            })
     }
-
 }

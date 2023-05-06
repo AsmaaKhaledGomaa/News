@@ -5,26 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.asmaa.news.R
-import com.asmaa.news.adapters.SourcesAdapter
+import com.asmaa.news.adapters.NewsAdapter
+import com.asmaa.news.databinding.FragmentAllNewsBinding
 import com.asmaa.news.models.ArticlesItem
 import com.asmaa.news.models.SourcesItem
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class AllNewsFragment : Fragment() {
 
+    lateinit var viewDataBindingall: FragmentAllNewsBinding
+
     lateinit var viewModel: AllNewsViewModel
-    private lateinit var progressBar: ProgressBar
-    private lateinit var recyclerView: RecyclerView
-    lateinit var tabLayout: TabLayout
-    private lateinit var tabLayoutCategory: TabLayout
-    var adapter = SourcesAdapter(null)
+
+    @Inject lateinit var adapter : NewsAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,20 +39,20 @@ class AllNewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_news, container, false)
+
+        viewDataBindingall = DataBindingUtil.inflate(inflater,R.layout.fragment_all_news,container,false)
+        return viewDataBindingall.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        progressBar = requireView().findViewById(R.id.progress_bar)
-        this.recyclerView = requireView().findViewById(R.id.recycle_view)
-        tabLayout = requireView().findViewById(R.id.tab_layout)
-        this.tabLayoutCategory = requireView().findViewById(R.id.tab_layout_items)
-        recyclerView.adapter = adapter
+
+       viewDataBindingall.recycleView.adapter = adapter
+
+        getSourcesByCategory()
 
         subscribeToLiveData()
-        addSourcesByCategory()
 
     }
 
@@ -67,8 +68,7 @@ class AllNewsFragment : Fragment() {
 
         viewModel.progressbarVisible.observe(viewLifecycleOwner){ isVisible ->
 
-            progressBar.isVisible = isVisible
-
+            viewDataBindingall.progressBar.isVisible = isVisible
         }
 
         viewModel.messageLiveData.observe(viewLifecycleOwner){ message ->
@@ -85,9 +85,9 @@ class AllNewsFragment : Fragment() {
     }
 
 
-    private fun addSourcesByCategory() {
+    private fun getSourcesByCategory() {
 
-        tabLayoutCategory.addOnTabSelectedListener(
+        viewDataBindingall.tabLayoutCategory.addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener {
 
                 override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -134,56 +134,56 @@ class AllNewsFragment : Fragment() {
                         0 -> {
                             val category = SourcesItem(category = "general")
                             viewModel.getSources(category)
-                            tabLayout.getTabAt(0)?.select()
+                            viewDataBindingall.tabLayout.getTabAt(0)?.select()
                         }
                         1 -> {
                             val category = SourcesItem(category = "business")
-                            tabLayout.getTabAt(0)?.select()
+                            viewDataBindingall.tabLayout.getTabAt(0)?.select()
                             viewModel.getSources(category)
                         }
                         2 -> {
                             val category = SourcesItem(category = "entertainment")
                             viewModel.getSources(category)
-                            tabLayout.getTabAt(0)?.select()
+                            viewDataBindingall.tabLayout.getTabAt(0)?.select()
                         }
                         3 -> {
                             val category = SourcesItem(category = "health")
                             viewModel.getSources(category)
-                            tabLayout.getTabAt(0)?.select()
+                            viewDataBindingall.tabLayout.getTabAt(0)?.select()
                         }
                         4 -> {
                             val category = SourcesItem(category = "science")
                             viewModel.getSources(category)
-                            tabLayout.getTabAt(0)?.select()
+                            viewDataBindingall.tabLayout.getTabAt(0)?.select()
                         }
                         5 -> {
                             val category = SourcesItem(category = "sports")
                             viewModel.getSources(category)
-                            tabLayout.getTabAt(0)?.select()
+                            viewDataBindingall.tabLayout.getTabAt(0)?.select()
                         }
                         6 -> {
                             val category = SourcesItem(category = "technology")
                             viewModel.getSources(category)
-                            tabLayout.getTabAt(0)?.select()
+                            viewDataBindingall.tabLayout.getTabAt(0)?.select()
                         }
                     }
                 }
             }
         )
-        tabLayoutCategory.getTabAt(0)?.select()
+        viewDataBindingall.tabLayoutCategory.getTabAt(0)?.select()
 
     }
 
-    private fun addSourcestoTabLayout(Sources: List<SourcesItem?>?) {
+     fun addSourcestoTabLayout(Sources: List<SourcesItem?>?) {
 
-        tabLayout.removeAllTabs()
+       // viewDataBindingall.tabLayout.removeAllTabs()
         Sources?.forEach {
-            val tab = tabLayout.newTab()
+            val tab = viewDataBindingall.tabLayout.newTab()
             tab.text = it?.name
             tab.tag = it
-            tabLayout.addTab(tab)
+            viewDataBindingall.tabLayout.addTab(tab)
         }
-        tabLayout.addOnTabSelectedListener(
+        viewDataBindingall.tabLayout.addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener {
 
                 override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -203,7 +203,7 @@ class AllNewsFragment : Fragment() {
                     viewModel.getNewsBySources(source)
                 }
             })
-        tabLayout.getTabAt(0)?.select()
+        viewDataBindingall.tabLayout.getTabAt(0)?.select()
 
     }
 

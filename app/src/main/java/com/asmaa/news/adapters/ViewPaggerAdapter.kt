@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.asmaa.news.R
 import com.asmaa.news.databinding.ItemViewpaggerBinding
 import com.asmaa.news.models.ArticlesItem
+import com.bumptech.glide.Glide
 
-class ViewPaggerAdapter( var items: List<ArticlesItem?>?) :RecyclerView.Adapter<ViewPaggerAdapter.ViewHolder>(){
+
+
+class ViewPaggerAdapter( var items: List<ArticlesItem?>? = null) :RecyclerView.Adapter<ViewPaggerAdapter.ViewHolder>(){
 
     class ViewHolder (val itemViewBinding:ItemViewpaggerBinding) : RecyclerView.ViewHolder(itemViewBinding.root){
 
@@ -19,7 +22,7 @@ class ViewPaggerAdapter( var items: List<ArticlesItem?>?) :RecyclerView.Adapter<
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val viewBinding : ItemViewpaggerBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.item_viewpagger,parent,false)
+      val viewBinding: ItemViewpaggerBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.item_viewpagger,parent,false)
             return ViewHolder(viewBinding)
 
     }
@@ -28,9 +31,17 @@ class ViewPaggerAdapter( var items: List<ArticlesItem?>?) :RecyclerView.Adapter<
 
         val item = items?.get(position)
         holder.bind(item)
-//        Glide.with(holder.itemView)
-//            .load(item?.urlToImage)
-//            .into(holder.itemViewBinding.imagePaggerNews)
+
+//        setOnItemClickListener {
+//            onItemClickListener?.let {
+//                it(item!!)
+//            }
+//        }
+        Glide.with(holder.itemView)
+            .load(item?.urlToImage)
+            .placeholder(R.drawable.animation_progressbar)
+            .error(R.drawable.animation_progressbar)
+            .into(holder.itemViewBinding.imagePaggerNews)
     }
 
     override fun getItemCount(): Int {
@@ -41,5 +52,11 @@ class ViewPaggerAdapter( var items: List<ArticlesItem?>?) :RecyclerView.Adapter<
         items = data
         notifyDataSetChanged()
 
+    }
+
+    private var onItemClickListener : ((ArticlesItem) -> Unit)?= null
+
+    fun setOnItemClickListener( listener: ((ArticlesItem) -> Unit)){
+        onItemClickListener = listener
     }
 }

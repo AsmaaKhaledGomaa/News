@@ -1,121 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.allnews.AllNewsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/logo_news"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="@id/tab_layout"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/logo"
-        android:scaleType="fitXY"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="25dp"
-        />
+    <data>
 
+    </data>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout_items"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo_news"
-        app:tabMode="scrollable"
-        app:tabTextColor="@color/gray"
-        app:tabIndicatorHeight="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        app:tabBackground="@drawable/tab_background"
-        app:tabSelectedTextColor="@color/white"
-        app:tabRippleColor="@color/white">
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.allnews.AllNewsFragment">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/General"
+        <ImageView
+            android:id="@+id/logo_news"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="@id/tab_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/logo"
+            android:scaleType="fitXY"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="25dp" />
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout_category"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo_news"
+            app:tabMode="scrollable"
+            app:tabTextColor="@color/gray"
+            app:tabIndicatorHeight="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:tabBackground="@drawable/tab_background"
+            app:tabSelectedTextColor="@color/white"
+            app:tabRippleColor="@color/white">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/General"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="General" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/Business"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Business" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/Entertainment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entertainment" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/Health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Health" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/Science"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Science" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/Sports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sports" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/Technology"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Technology" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/sources"
+            app:layout_constraintStart_toStartOf="@id/tab_layout_category"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout_category"
+            app:tabMode="scrollable"
+            app:tabTextColor="@color/gray"
+            app:tabIndicatorHeight="2dp"
+            app:tabIndicatorColor="@color/pink"
+            android:layout_marginStart="5dp"
+            app:tabRippleColor="@color/white"
+            app:tabIndicatorFullWidth="false" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="General"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/Business"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Business"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/Entertainment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Entertainment"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/Health"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Health"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/Science"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Science"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/Sports"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sports"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/Technology"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Technology"/>
-
-    </com.google.android.material.tabs.TabLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout"
+            tools:listitem="@layout/item_news"
+            android:layout_margin="10dp" />
 
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/sources"
-        app:layout_constraintStart_toStartOf="@id/tab_layout_items"
-        app:layout_constraintTop_toBottomOf="@id/tab_layout_items"
-        app:tabMode="scrollable"
-        app:tabTextColor="@color/gray"
-        app:tabIndicatorHeight="2dp"
-        app:tabIndicatorColor="@color/pink"
-        android:layout_marginStart="5dp"
-        app:tabRippleColor="@color/white"
-        app:tabIndicatorFullWidth="false"/>
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab_layout"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycle_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab_layout"
-        tools:listitem="@layout/item_news"
-        android:layout_margin="10dp" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchNewsFragment"
-        android:name="com.asmaa.news.ui.fragments.SearchNewsFragment"
+        android:name="com.asmaa.news.ui.fragments.search.SearchNewsFragment"
         android:label="fragment_research"
         tools:layout="@layout/fragment_search_news" >
         <action

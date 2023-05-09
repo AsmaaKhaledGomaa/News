@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/articalFragment"
-        android:name="com.asmaa.news.ui.fragments.ArticalFragment"
+        android:name="com.asmaa.news.ui.fragments.artical.ArticalFragment"
         android:label="fragment_news_details"
         tools:layout="@layout/fragment_artical" />
     <fragment

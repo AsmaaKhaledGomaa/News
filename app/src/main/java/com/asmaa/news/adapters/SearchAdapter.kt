@@ -2,25 +2,29 @@ package com.asmaa.news.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.asmaa.news.R
 import com.asmaa.news.databinding.ItemNewsBinding
+import com.asmaa.news.databinding.ItemSearchBinding
 import com.asmaa.news.models.ArticlesItem
 import com.bumptech.glide.Glide
 
 
-class SearchAdapter(var items: List<ArticlesItem?>?): RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(var items: List<ArticlesItem?>? = null):
+    RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
 
-    class ViewHolder(val itemViewBinding: ItemNewsBinding) : RecyclerView.ViewHolder(itemViewBinding.root) {
+    class ViewHolder(val itemViewBinding: ItemSearchBinding) : RecyclerView.ViewHolder(itemViewBinding.root) {
         fun bind(item: ArticlesItem?){
-            itemViewBinding.news=item
+            itemViewBinding.search=item
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val viewBinding: ItemNewsBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.item_search,parent,false)
+        val viewBinding: ItemSearchBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.item_search,parent,false)
         return ViewHolder(viewBinding)
     }
 
@@ -36,7 +40,7 @@ class SearchAdapter(var items: List<ArticlesItem?>?): RecyclerView.Adapter<Searc
             .load(item?.urlToImage)
             .placeholder(R.drawable.animation_progressbar)
             .error(R.drawable.animation_progressbar)
-            .into(holder.itemViewBinding.imageview)
+            .into(holder.itemViewBinding.imageviewSearch)
 
     }
 
@@ -46,4 +50,8 @@ class SearchAdapter(var items: List<ArticlesItem?>?): RecyclerView.Adapter<Searc
         notifyDataSetChanged()
 
     }
+
+
+
+
 }

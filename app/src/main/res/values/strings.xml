@@ -28,4 +28,6 @@
     <string name="thailand">Thailand</string>
     <string name="turkey">Turkey</string>
     <string name="south_africa">South Africa</string>
+    <string name="nested_scroll">nested_scroll</string>
+    <string name="image_news_details">Image_news_details</string>
 </resources>

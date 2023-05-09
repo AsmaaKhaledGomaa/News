@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -15,8 +17,13 @@ import com.asmaa.news.Constans
 import com.asmaa.news.R
 import com.asmaa.news.adapters.SearchAdapter
 import com.asmaa.news.databinding.FragmentSearchNewsBinding
+import com.asmaa.news.models.ArticlesItem
 import com.asmaa.news.models.NewsResponse
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,7 +48,7 @@ class SearchNewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        viewDataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_search_news,container,false)
+       viewDataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_search_news,container,false)
         return viewDataBinding.root
     }
 
@@ -49,7 +56,39 @@ class SearchNewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewDataBinding.SearchRecycleView.adapter = adapter
+
+        var job: Job? = null
+        viewDataBinding.SearchView.setOnSearchClickListener { editable ->
+            job?.cancel()
+            job = MainScope().launch {
+                delay(500L)
+
+                editable?.let {
+                    editable.toString().isNotEmpty()
+                    viewModel.searchNews(editable.toString())
+                }
+            }
+        }
+
+        subscribeToLiveData()
+
+    }
+
+    private fun subscribeToLiveData() {
+
+        viewModel.searchNewsLiveData.observe(viewLifecycleOwner) {
+            changeDataNewsAdapter(it)
+        }
+
+        viewModel.progressBarLiveData.observe(viewLifecycleOwner){
+            viewDataBinding.progressBarSearch.isVisible = isVisible
+        }
     }
 
 
+    private fun changeDataNewsAdapter(articles : List<ArticlesItem?>?){
+
+        adapter.changeData(articles)
+    }
 }
+

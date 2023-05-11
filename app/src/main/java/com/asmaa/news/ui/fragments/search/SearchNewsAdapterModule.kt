@@ -1,6 +1,6 @@
 package com.asmaa.news.ui.fragments.search
 
-import com.asmaa.news.adapters.SearchAdapter
+import com.asmaa.news.core.adapters.SearchAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

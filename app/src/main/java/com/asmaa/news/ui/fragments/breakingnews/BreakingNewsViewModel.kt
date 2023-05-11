@@ -3,8 +3,8 @@ package com.asmaa.news.ui.fragments.breakingnews
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.asmaa.news.models.ArticlesItem
-import com.asmaa.news.repo.breakingnews.BreakingNewsRepo
+import com.asmaa.news.core.models.ArticlesItem
+import com.asmaa.news.core.repo.breakingnews.BreakingNewsRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

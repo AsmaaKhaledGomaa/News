@@ -1,6 +1,6 @@
 package com.asmaa.news.ui.fragments.breakingnews
 
-import com.asmaa.news.adapters.ViewPaggerAdapter
+import com.asmaa.news.core.adapters.ViewPaggerAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

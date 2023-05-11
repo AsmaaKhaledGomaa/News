@@ -10,9 +10,9 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.asmaa.news.R
-import com.asmaa.news.adapters.ViewPaggerAdapter
+import com.asmaa.news.core.adapters.ViewPaggerAdapter
 import com.asmaa.news.databinding.FragmentBreakingNewsBinding
-import com.asmaa.news.models.ArticlesItem
+import com.asmaa.news.core.models.ArticlesItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

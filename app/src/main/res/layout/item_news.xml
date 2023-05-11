@@ -6,7 +6,7 @@
 
         <variable
             name="news"
-            type="com.asmaa.news.models.ArticlesItem" />
+            type="com.asmaa.news.core.models.ArticlesItem" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -85,7 +85,7 @@
                 app:layout_constraintStart_toStartOf="@id/author"
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"
-                android:text="@{news.publishedAt"/>
+                android:text="@{news.publishedAt}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

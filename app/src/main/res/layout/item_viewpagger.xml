@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewpagger"
-            type="com.asmaa.news.models.ArticlesItem" />
+            type="com.asmaa.news.core.models.ArticlesItem" />
 
     </data>
 

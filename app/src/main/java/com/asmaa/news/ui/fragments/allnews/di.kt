@@ -1,6 +1,6 @@
 package com.asmaa.news.ui.fragments.allnews
 
-import com.asmaa.news.adapters.NewsAdapter
+import com.asmaa.news.core.adapters.NewsAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

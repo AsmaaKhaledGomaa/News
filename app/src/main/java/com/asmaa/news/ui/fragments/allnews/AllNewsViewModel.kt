@@ -14,7 +14,7 @@ import kotlin.Exception
 
 
 @HiltViewModel
-class AllNewsViewModel @Inject constructor(val newsRepo: NewsRepo, val sourcesRepo: SourcesRepo) : ViewModel() {
+class AllNewsViewModel @Inject constructor(val newsRepo: NewsRepo, val sourcesRepo: SourcesRepo):ViewModel(){
 
 
     val sourcesLiveData = MutableLiveData<List<SourcesItem?>?>()
@@ -23,13 +23,14 @@ class AllNewsViewModel @Inject constructor(val newsRepo: NewsRepo, val sourcesRe
     val messageLiveData = MutableLiveData<String>()
 
 
+
     fun getSources(sources: SourcesItem) {
 
         viewModelScope.launch {
             try {
                 progressbarVisible.value = true
 
-                val result = sourcesRepo.getSourcesR(sources.category ?: "")
+                val result = sourcesRepo.getSourcesR(sources.category?: "")
 
                 progressbarVisible.value = false
 
@@ -37,10 +38,10 @@ class AllNewsViewModel @Inject constructor(val newsRepo: NewsRepo, val sourcesRe
 //                Timber.tag("error").i(category.category)
 
             } catch (ex: Exception) {
-                progressbarVisible.value = false
+                    progressbarVisible.value = false
+                }
             }
         }
-    }
 
 
     fun getNewsBySources(source: SourcesItem) {
@@ -51,7 +52,7 @@ class AllNewsViewModel @Inject constructor(val newsRepo: NewsRepo, val sourcesRe
                 val result = newsRepo.getNewsR(source.id.toString())
                 progressbarVisible.value = false
                 newsLiveData.value = result
-            } catch (ex: Exception) {
+            }catch (ex:Exception){
                 progressbarVisible.value = false
             }
         }

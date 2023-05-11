@@ -30,7 +30,8 @@ class BreakingNewsViewModel @Inject constructor(val breakingNewsRepo:BreakingNew
 
                progressbarLiveData.value = false
 
-               topnewsLiveData.value=result
+               topnewsLiveData.value= result
+
            } catch (ex: Exception) {
                progressbarLiveData.value = false
 

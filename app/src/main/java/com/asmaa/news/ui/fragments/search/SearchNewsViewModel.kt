@@ -15,13 +15,13 @@ class SearchNewsViewModel @Inject constructor(val searchNewsRepo: SearchNewsRepo
     val searchNewsLiveData = MutableLiveData<List<ArticlesItem?>?>()
     val progressBarLiveData = MutableLiveData<Boolean>()
 
-    fun searchNews( search:String) {
+    fun searchNews( news:ArticlesItem) {
 
         viewModelScope.launch {
             try {
                     progressBarLiveData.value = true
 
-                val result = searchNewsRepo.searchNews(search)
+                val result = searchNewsRepo.searchNews(news.title.toString())
 
                     progressBarLiveData.value = false
 

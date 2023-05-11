@@ -25,144 +25,6 @@
             android:textSize="20sp"
             android:textColor="@color/pink" />
 
-<!--        <com.google.android.material.tabs.TabLayout-->
-<!--            android:id="@+id/country_tablayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="?attr/actionBarSize"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/breakingNews"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            android:layout_marginStart="10dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            app:tabMode="scrollable"-->
-<!--            app:tabTextColor="@color/gray"-->
-<!--            app:tabIndicatorHeight="0dp"-->
-<!--            app:tabBackground="@drawable/tab_background"-->
-<!--            app:tabSelectedTextColor="@color/white"-->
-<!--            app:tabRippleColor="@color/white">-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/eg"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/egypt" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/ae"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/united_arab_emirates" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/ar"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/argentina" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/au"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/australia" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/bg"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/bulgaria" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/br"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/brazil" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/cn"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/china" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/co"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/colombia" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/de"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/germany" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/fr"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/france" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/gr"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/greece" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/id"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/indonesia" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/in"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/india" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/it"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/italy" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/jp"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/japan" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/kr"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/korea" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/ru"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/russian" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/Th"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/thailand" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/tr"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/turkey" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/za"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/south_africa" />-->
-
-<!--        </com.google.android.material.tabs.TabLayout>-->
-
         <ProgressBar
             android:id="@+id/progress_bar_item"
             android:layout_width="wrap_content"
@@ -195,6 +57,25 @@
             app:layout_constraintStart_toStartOf="@id/viewPager"
             app:layout_constraintEnd_toEndOf="@id/viewPager"
             app:layout_constraintTop_toBottomOf="@id/viewPager" />
+
+        <TextView
+            android:id="@+id/Discovry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/viewPager"
+            app:layout_constraintStart_toStartOf="@id/breakingNews"
+            android:text="Discovry"
+            android:textSize="20sp"
+            android:textColor="@color/pink"
+            android:layout_marginTop="10dp"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/viewPager"
+            app:layout_constraintTop_toBottomOf="@id/Discovry"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,6 +1,6 @@
 package com.asmaa.news.core.repo.searchnews.datasources
 
-import com.asmaa.news.core.constants.APIConstants
+import com.asmaa.news.core.di.constants.APIConstants
 import com.asmaa.news.core.api.WebServices
 import com.asmaa.news.core.models.ArticlesItem
 

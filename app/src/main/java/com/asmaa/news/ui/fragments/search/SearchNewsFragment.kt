@@ -55,7 +55,8 @@ class SearchNewsFragment : Fragment() {
 
                 editable?.let {
                     editable.toString().isNotEmpty()
-                    viewModel.searchNews(editable.toString())
+                    val result = ArticlesItem(title = editable.toString())
+                    viewModel.searchNews(result)
                 }
             }
         }

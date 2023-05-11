@@ -1,4 +1,4 @@
-package com.asmaa.news.core.constants
+package com.asmaa.news.core.di.constants
 
 
 object APIConstants {

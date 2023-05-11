@@ -1,4 +1,4 @@
-package com.asmaa.news.core.repo.breakingnews.datasources
+package com.asmaa.news.core.repo.home.breakingnews.datasources
 
 import com.asmaa.news.core.di.constants.APIConstants
 import com.asmaa.news.core.api.WebServices
@@ -9,7 +9,7 @@ class BreakingNewsONDataSourceIMP(val webServices: WebServices): BreakingNewsOND
 
     override suspend fun getTopNewsDS(country: String): List<ArticlesItem?>? {
         try {
-            val tobNews = webServices.getTopNews(APIConstants.API_KEY,"us")
+            val tobNews = webServices.getTopNews(APIConstants.API_KEY,"us", "en")
             return tobNews.articles!!
 
         }catch (ex:Exception){

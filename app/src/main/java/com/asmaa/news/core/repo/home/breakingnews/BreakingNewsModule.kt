@@ -1,8 +1,8 @@
-package com.asmaa.news.core.repo.breakingnews
+package com.asmaa.news.core.repo.home.breakingnews
 
 import com.asmaa.news.core.api.WebServices
-import com.asmaa.news.core.repo.breakingnews.datasources.BreakingNewsONDataSource
-import com.asmaa.news.core.repo.breakingnews.datasources.BreakingNewsONDataSourceIMP
+import com.asmaa.news.core.repo.home.breakingnews.datasources.BreakingNewsONDataSource
+import com.asmaa.news.core.repo.home.breakingnews.datasources.BreakingNewsONDataSourceIMP
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

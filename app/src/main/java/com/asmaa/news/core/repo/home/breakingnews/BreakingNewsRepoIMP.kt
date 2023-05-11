@@ -1,9 +1,10 @@
-package com.asmaa.news.core.repo.breakingnews
+package com.asmaa.news.core.repo.home.breakingnews
 
 import com.asmaa.news.core.models.ArticlesItem
-import com.asmaa.news.core.repo.breakingnews.datasources.BreakingNewsONDataSource
+import com.asmaa.news.core.repo.home.breakingnews.datasources.BreakingNewsONDataSource
 
-class BreakingNewsRepoIMP(val breakingNewsONDataSource: BreakingNewsONDataSource): BreakingNewsRepo {
+class BreakingNewsRepoIMP(val breakingNewsONDataSource: BreakingNewsONDataSource):
+    BreakingNewsRepo {
 
     override suspend fun getTopNewsR(country: String): List<ArticlesItem?>? {
         try {

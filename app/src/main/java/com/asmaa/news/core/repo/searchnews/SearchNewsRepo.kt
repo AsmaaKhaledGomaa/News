@@ -4,6 +4,6 @@ import com.asmaa.news.core.models.ArticlesItem
 
 interface SearchNewsRepo {
 
-   suspend fun searchNews( search: String):List<ArticlesItem?>?
+   suspend fun searchNews(search: String):List<ArticlesItem?>?
 
 }

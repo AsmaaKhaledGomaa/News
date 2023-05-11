@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.asmaa.news.R
+import com.asmaa.news.core.adapters.DiscoverAdapter
 import com.asmaa.news.core.adapters.ViewPaggerAdapter
 import com.asmaa.news.databinding.FragmentBreakingNewsBinding
 import com.asmaa.news.core.models.ArticlesItem
@@ -22,7 +23,8 @@ class BreakingNewsFragment : Fragment() {
     lateinit var viewDataBinding : FragmentBreakingNewsBinding
     lateinit var viewModel: BreakingNewsViewModel
 
-    @Inject lateinit var adapter : ViewPaggerAdapter
+    @Inject lateinit var adapterViewPagger : ViewPaggerAdapter
+    @Inject lateinit var adapterDiscover : DiscoverAdapter
 
 
 
@@ -47,19 +49,25 @@ class BreakingNewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewDataBinding.viewPager.adapter = adapter
+        viewDataBinding.viewPager.adapter = adapterViewPagger
         viewDataBinding.dotsIndicator.attachTo(viewDataBinding.viewPager)
+
+        viewDataBinding.discoverRecycleView.adapter = adapterDiscover
 
         subscribeToLiveData()
 
-        //addNewsByCountry()
         viewModel.getTopNews()
+        viewModel.getDiscoverNews()
     }
 
     fun subscribeToLiveData(){
 
         viewModel.topnewsLiveData.observe(viewLifecycleOwner){
             changeDataNewsAdapter(it)
+        }
+
+        viewModel.discoverLiveData.observe(viewLifecycleOwner){
+            changeDataDiscoverNewsAdapter(it)
         }
 
         viewModel.progressbarLiveData.observe(viewLifecycleOwner){
@@ -75,7 +83,12 @@ class BreakingNewsFragment : Fragment() {
 
     private fun changeDataNewsAdapter(articles : List<ArticlesItem?>?){
 
-        adapter.changeData(articles)
+        adapterViewPagger.changeData(articles)
+    }
+
+    private fun changeDataDiscoverNewsAdapter(articles : List<ArticlesItem?>?){
+
+        adapterDiscover.changeData(articles)
     }
 
 }

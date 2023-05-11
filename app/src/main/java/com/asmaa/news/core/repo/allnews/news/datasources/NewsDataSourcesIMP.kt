@@ -9,7 +9,7 @@ class NewsONDataSourcesIMP(val webServices: WebServices): NewsONDataSources {
     override suspend fun getNewsDS(sourceId: String): List<ArticlesItem?>? {
 
         try {
-            val result = webServices.getNews(APIConstants.API_KEY, sourceId)
+            val result = webServices.getNews(APIConstants.API_KEY, sourceId,"en")
             return result.articles!!
 
         } catch (ex: Exception) {

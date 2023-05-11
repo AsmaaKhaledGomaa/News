@@ -9,7 +9,7 @@ class SourcesONDataSourcesIMP(val webServices: WebServices): SourcesONDataSource
 
     override suspend fun getSourcesDS(category: String): List<SourcesItem?>? {
         try {
-            val result = webServices.getSources(APIConstants.API_KEY, category)
+            val result = webServices.getSources(APIConstants.API_KEY, category, "en")
             return result.sources!!
 
         } catch (ex: Exception) {

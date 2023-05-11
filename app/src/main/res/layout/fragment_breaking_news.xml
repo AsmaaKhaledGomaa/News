@@ -67,15 +67,19 @@
             android:text="Discovry"
             android:textSize="20sp"
             android:textColor="@color/pink"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             />
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/discoverRecycleView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="@id/viewPager"
             app:layout_constraintTop_toBottomOf="@id/Discovry"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_discover"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

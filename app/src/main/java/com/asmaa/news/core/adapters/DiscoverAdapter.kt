@@ -31,6 +31,7 @@ class DiscoverAdapter(var items: List<ArticlesItem?>?= null): RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val item = items?.get(position)
         holder.bind(item)
 

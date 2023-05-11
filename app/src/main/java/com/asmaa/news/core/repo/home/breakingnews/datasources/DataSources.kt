@@ -1,4 +1,4 @@
-package com.asmaa.news.core.repo.breakingnews.datasources
+package com.asmaa.news.core.repo.home.breakingnews.datasources
 
 import com.asmaa.news.core.models.ArticlesItem
 
